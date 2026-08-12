@@ -4,7 +4,7 @@ from xgboost import XGBClassifier
 from sklearn.preprocessing import OneHotEncoder , StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
-import joblib
+import joblib as jb
 
 addiction_df = pd.read_csv("F://Smartphone_Addiction//Data//train.csv")
 X = addiction_df.drop(columns=["addicted_label"])
@@ -50,3 +50,6 @@ boosted_forest_pipeline = Pipeline(
     ]
 )
 
+boosted_forest_pipeline.fit(X , y)
+
+jb.dump(boosted_forest_pipeline , "F://Smartphone_Addiction//smartphone_addiction.joblib")
