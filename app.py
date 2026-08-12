@@ -8,7 +8,7 @@ st.set_page_config(
     layout="centered",
 )
 
-MODEL_PATH = r"F:\Smartphone_Addiction\Model\smartphone_addiction.joblib"
+MODEL_PATH = "Model/smartphone_addiction.joblib"
 
 ADDICTED_GIF = "https://media.giphy.com/media/GOFg40jTXz47Nz7yTH/giphy.gif"
 NOT_ADDICTED_GIF = "https://media.giphy.com/media/u6FP12KqNBydVRUj8G/giphy.gif"
