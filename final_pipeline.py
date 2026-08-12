@@ -43,3 +43,10 @@ preprocessor = ColumnTransformer(
     ]
 )
 
+boosted_forest_pipeline = Pipeline(
+    [
+        ("Preprocessing" , preprocessor),
+        ("Model" , XGBClassifier(subsample = 0.8, n_estimators = 200, min_child_weight = 15, max_depth = 5, learning_rate = 0.1, gamma = 2, colsample_bytree = 0.8 ,objective='binary:logistic', eval_metric='auc', random_state=42))
+    ]
+)
+
