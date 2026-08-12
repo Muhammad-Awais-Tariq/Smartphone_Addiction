@@ -14,3 +14,32 @@ numeric_coloumns_median = ["age" , "daily_screen_time_hours" , "sleep_hours" , "
 numeric_column_zero = ["social_media_hours" , "gaming_hours"]
 categorical_columns = ["gender", "stress_level", "academic_work_impact"]
 
+numeric_pipeline_1 = Pipeline(
+    [
+        ("Imputer" , SimpleImputer(strategy="median")),
+        ("Scaler" , StandardScaler())
+    ]
+)
+
+numeric_pipeline_2 = Pipeline(
+    [
+        ("Imputer" , SimpleImputer(strategy='constant', fill_value=0)),
+        ("Scaler" , StandardScaler())
+    ]
+)
+
+categorical_pipeline = Pipeline(
+    [
+        ("Imputer" , SimpleImputer(strategy='most_frequent')),
+        ("Encoder" , OneHotEncoder(handle_unknown="ignore"))        
+    ]
+)
+
+preprocessor = ColumnTransformer(
+    [
+        ("num1" , numeric_pipeline_1 , numeric_coloumns_median),
+        ("num2" , numeric_pipeline_2 , numeric_column_zero),
+        ("categorical" , categorical_pipeline , categorical_columns)
+    ]
+)
+
